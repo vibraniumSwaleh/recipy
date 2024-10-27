@@ -1,4 +1,6 @@
 import icons from 'url:../img/icons.svg';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 const recipeContainer = document.querySelector('.recipe');
 
@@ -9,9 +11,6 @@ const timeout = function (s) {
     }, s * 1000);
   });
 };
-
-// https://github.com/vibraniumSwaleh/recipy.git
-
 const renderSpinner = function (parentEl) {
   const markUp = `
     <div class="spinner">
@@ -23,6 +22,7 @@ const renderSpinner = function (parentEl) {
   parentEl.innerHTML = '';
   parentEl.insertAdjacentHTML('afterbegin', markUp);
 };
+
 ///////////////////////////////////////
 const showRecipe = async function () {
   try {
