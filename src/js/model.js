@@ -14,8 +14,7 @@ export const loadRecipe = async function (id) {
     let {
       data: { recipe },
     } = data;
-    //console.log('Raw recipe', recipe);
-
+  
     state.recipe = {
       id: recipe.id,
       title: recipe.title,
@@ -26,7 +25,7 @@ export const loadRecipe = async function (id) {
       cookingTime: recipe.cooking_time,
       ingredients: recipe.ingredients,
     };
-    console.log('Model recipe: ', state.recipe);
+    //console.log('Model recipe: ', state.recipe);
   } catch (error) {
     console.log(error.message);
   }
