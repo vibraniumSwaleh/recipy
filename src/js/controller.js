@@ -1,3 +1,5 @@
+import * as model from './model';
+
 import icons from 'url:../img/icons.svg';
 import 'regenerator-runtime/runtime'; //async and await
 import 'core-js/stable'; //all other polyfils
@@ -29,31 +31,12 @@ const showRecipe = async function () {
   try {
     const id = window.location.hash.slice(1);
     if (!id) return;
-    //console.log(id);
-    // Loading recipe
     renderSpinner(recipeContainer);
-    const res = await fetch(
-      `https://forkify-api.herokuapp.com/api/v2/recipes/${id}`
-    );
-    const data = await res.json();
+    //console.log(id);
 
-    if (!res.ok) throw new Error(`${data.message} (Status: ${res.status})`);
-
-    let {
-      data: { recipe },
-    } = data;
-    //console.log('Raw recipe', recipe);
-
-    recipe = {
-      id: recipe.id,
-      title: recipe.title,
-      publisher: recipe.publisher,
-      sourceUrl: recipe.source_url,
-      image: recipe.image_url,
-      servings: recipe.servings,
-      cookingTime: recipe.cooking_time,
-      ingredients: recipe.ingredients,
-    };
+    // Loading recipe
+    await model.loadRecipe(id);
+    const { recipe } = model.state;
     //console.log('Formatted recipe', recipe);
 
     // Rendering recipe
