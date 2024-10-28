@@ -37,14 +37,12 @@ const showRecipe = async function () {
     // Loading recipe
     await model.loadRecipe(id);
     const { recipe } = model.state;
-    console.log('controller recipe: ', recipe);
+    //console.log('controller recipe: ', recipe);
 
     recipeView.render(recipe);
   } catch (error) {
     console.log(error);
   }
 };
-
-showRecipe();
 
 eventToListen.forEach(event => window.addEventListener(event, showRecipe));
