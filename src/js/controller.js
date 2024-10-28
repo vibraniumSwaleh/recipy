@@ -6,7 +6,6 @@ import 'regenerator-runtime/runtime'; //async and await
 import 'core-js/stable'; //all other polyfils
 
 const recipeContainer = document.querySelector('.recipe');
-const eventToListen = ['load', 'hashchange'];
 
 const renderSpinner = function (parentEl) {
   const markUp = `
@@ -21,7 +20,7 @@ const renderSpinner = function (parentEl) {
 };
 
 ///////////////////////////////////////
-const showRecipe = async function () {
+const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
     if (!id) return;
@@ -38,4 +37,7 @@ const showRecipe = async function () {
   }
 };
 
-eventToListen.forEach(event => window.addEventListener(event, showRecipe));
+const init = function () {
+  recipeView.addHandlerRender(controlRecipes);
+};
+init();

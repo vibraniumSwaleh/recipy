@@ -4,12 +4,19 @@ import { Fraction } from 'fractional';
 class RecipeView {
   #parentElement = document.querySelector('.recipe');
   #data;
+  #eventToListen = ['load', 'hashchange'];
 
   render(data) {
     this.#data = data;
     const markup = this.#generateMarkup();
     this.#clear();
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  addHandlerRender(handler) {
+    this.#eventToListen.forEach(event =>
+      window.addEventListener(event, handler)
+    );
   }
 
   #clear() {
