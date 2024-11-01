@@ -2,13 +2,15 @@ import { async } from 'regenerator-runtime';
 import { API_URL } from './config';
 import { getJSON } from './helper';
 
+//https://forkify-api.herokuapp.com/api/v2/recipes?search=pizza
+
 export const state = {
   recipe: {},
 };
 
 export const loadRecipe = async function (id) {
   try {
-    const data = await getJSON(`${API_URL}/${id}`);
+    const data = await getJSON(`${API_URL}${id}`);
 
     let {
       data: { recipe },
@@ -29,3 +31,14 @@ export const loadRecipe = async function (id) {
     throw error;
   }
 };
+
+export const loadSearchResults = async function (query) {
+  try {
+    const data = await getJSON(`${API_URL}?search=${query}`);
+    console.log(data);
+  } catch (error) {
+    throw error;
+  }
+};
+
+loadSearchResults('pizza');
