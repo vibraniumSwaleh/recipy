@@ -15,13 +15,24 @@ const controlRecipes = async function () {
     // Loading recipe
     await model.loadRecipe(id);
     const { recipe } = model.state;
-    //console.log('controller recipe: ', recipe);
+    console.log('Controller recipe: ', model.state);
 
     recipeView.render(recipe);
   } catch (error) {
     recipeView.renderError();
   }
 };
+
+const controlSearchResults = async function (query) {
+  try {
+    await model.loadSearchResults(query);
+    console.log('Controller search: ', model.state.search.results);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+controlSearchResults('pizza');
 
 const init = function () {
   recipeView.addHandlerRender(controlRecipes);
