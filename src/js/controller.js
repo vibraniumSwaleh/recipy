@@ -30,7 +30,7 @@ const controlSearchResults = async function () {
     if (!query) return;
 
     await model.loadSearchResults(query);
-    console.log('Controller search: ', model.state.search.results);
+    console.log('Controller search results: ', model.state.search.results);
   } catch (error) {
     console.log(error.message);
   }
