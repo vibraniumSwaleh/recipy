@@ -1,18 +1,18 @@
 class SearchView {
-  #parentEl = document.querySelector('.search');
+  #parentElement = document.querySelector('.search');
 
   getQuery() {
-    const query = this.#parentEl.querySelector('.search__field').value.trim();
+    const query = this.#parentElement.querySelector('.search__field').value.trim();
     this.#clearInput();
     return query;
   }
 
   #clearInput() {
-    this.#parentEl.querySelector('.search__field').value = '';
+    this.#parentElement.querySelector('.search__field').value = '';
   }
 
   addHandlerSearch(handler) {
-    this.#parentEl.addEventListener('submit', function (e) {
+    this.#parentElement.addEventListener('submit', function (e) {
       e.preventDefault();
       handler();
     });
