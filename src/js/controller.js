@@ -1,6 +1,7 @@
 import * as model from './model';
 import recipeView from './views/recipeView';
 import icons from 'url:../img/icons.svg';
+import searchView from '../../.src/js/views/searchView';
 
 import 'regenerator-runtime/runtime'; //async and await
 import 'core-js/stable'; //all other polyfils
@@ -25,6 +26,9 @@ const controlRecipes = async function () {
 
 const controlSearchResults = async function (query) {
   try {
+    const query = searchView.getQuery();
+    if (!query) return;
+    
     await model.loadSearchResults(query);
     console.log('Controller search: ', model.state.search.results);
   } catch (error) {
