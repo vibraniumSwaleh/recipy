@@ -1,10 +1,14 @@
 import * as model from './model';
 import recipeView from './views/recipeView';
-import icons from 'url:../img/icons.svg';
 import searchView from '../../.src/js/views/searchView';
 import resultsView from './views/resultsView';
-import 'regenerator-runtime/runtime'; //async and await
+
 import 'core-js/stable'; //all other polyfils
+import 'regenerator-runtime/runtime'; //async and await
+
+if (module.hot) {
+  module.hot.accept();
+}
 
 ///////////////////////////////////////
 const controlRecipes = async function () {
