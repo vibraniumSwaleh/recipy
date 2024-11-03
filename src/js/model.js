@@ -1,5 +1,5 @@
 import { async } from 'regenerator-runtime';
-import { API_URL } from './config';
+import { API_URL, RES_PER_PAGE } from './config';
 import { getJSON } from './helper';
 
 //https://forkify-api.herokuapp.com/api/v2/recipes?search=pizza
@@ -9,6 +9,7 @@ export const state = {
   search: {
     query: '',
     results: [],
+    resusltsPerPage: RES_PER_PAGE,
   },
 };
 
@@ -51,4 +52,10 @@ export const loadSearchResults = async function (query) {
   } catch (error) {
     throw error;
   }
+};
+
+export const getSearchResultsPage = function (page) {
+  const start = (page - 1) * state.search.resusltsPerPage;
+  const end = page * state.search.resusltsPerPage;
+  return state.search.results.slice(start, end);
 };
