@@ -2,6 +2,7 @@ import * as model from './model';
 import recipeView from './views/recipeView';
 import searchView from '../../.src/js/views/searchView';
 import resultsView from './views/resultsView';
+import paginationView from './views/paginationView';
 
 import 'core-js/stable'; //all other polyfils
 import 'regenerator-runtime/runtime'; //async and await
@@ -33,10 +34,9 @@ const controlSearchResults = async function () {
 
     await model.loadSearchResults(query);
 
-    const resusltsPP = model.getSearchResultsPage();
-    console.log('Page results: ', resusltsPP);
-    
-    resultsView.render(resusltsPP);
+    console.log('Page results: ', model.state.search.results);
+    resultsView.render(model.getSearchResultsPage(4));
+    paginationView.render(model.state.search);
   } catch (error) {
     console.log(error.message);
   }
