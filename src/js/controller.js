@@ -6,10 +6,6 @@ import resultsView from './views/resultsView';
 import 'core-js/stable'; //all other polyfils
 import 'regenerator-runtime/runtime'; //async and await
 
-if (module.hot) {
-  module.hot.accept();
-}
-
 ///////////////////////////////////////
 const controlRecipes = async function () {
   try {
@@ -36,10 +32,10 @@ const controlSearchResults = async function () {
     if (!query) return;
 
     await model.loadSearchResults(query);
-    const queryResults = model.state.search.results;
-    console.log('Controller search results: ', queryResults);
-    const resusltsPP = model.getSearchResultsPage(3);
+
+    const resusltsPP = model.getSearchResultsPage();
     console.log('Page results: ', resusltsPP);
+    
     resultsView.render(resusltsPP);
   } catch (error) {
     console.log(error.message);
