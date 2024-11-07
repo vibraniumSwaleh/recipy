@@ -32,6 +32,7 @@ Recipy is a web application that allows users to search through over 1,000,000 r
     │   ├── controller.js # Main controller script
     │   └── views       # JavaScript views and components
     └── sass            # Sass stylesheets
+```
 
 ## Technologies Used
 - HTML and Sass for structuring and styling the application.
