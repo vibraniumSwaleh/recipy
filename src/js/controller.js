@@ -17,7 +17,6 @@ const controlRecipes = async function () {
     // Loading recipe
     await model.loadRecipe(id);
     const { recipe } = model.state;
-    console.log('Controller recipe: ', model.state);
 
     recipeView.render(recipe);
   } catch (error) {
@@ -34,7 +33,6 @@ const controlSearchResults = async function () {
 
     await model.loadSearchResults(query);
 
-    console.log('Page results: ', model.state.search.results);
     resultsView.render(model.getSearchResultsPage());
     paginationView.render(model.state.search);
   } catch (error) {
