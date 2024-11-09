@@ -2,7 +2,7 @@
 
 Recipy is a web application that allows users to search through over 1,000,000 recipes, bookmark favorites, and upload custom recipes. Built with HTML, Sass, and JavaScript, Recipy is designed with a responsive, user-friendly interface.
 
-
+![Recipy landing page](./src/img/recipy.png)
 
 ## Table of Contents
 
