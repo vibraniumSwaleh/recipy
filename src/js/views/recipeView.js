@@ -130,6 +130,7 @@ class RecipeView extends View {
          </a>
        </div>`;
   }
+
 }
 
 export default new RecipeView();
