@@ -3,6 +3,7 @@ import recipeView from './views/recipeView';
 import searchView from '../../.src/js/views/searchView';
 import resultsView from './views/resultsView';
 import paginationView from './views/paginationView';
+import bookmarksView from './views/bookmarksView';
 
 import 'core-js/stable'; //all other polyfils
 import 'regenerator-runtime/runtime'; //async and await
@@ -16,6 +17,7 @@ const controlRecipes = async function () {
 
     // Update results view to mark selected search results
     resultsView.update(model.getSearchResultsPage());
+    bookmarksView.update(model.state.bookmarks);
 
     // Loading recipe
     await model.loadRecipe(id);
@@ -59,6 +61,7 @@ const controlAddBookmark = function () {
   else model.deleteBookmark(model.state.recipe.id);
   console.log('Bookmark status:', model.state.recipe);
   recipeView.update(model.state.recipe);
+  bookmarksView.render(model.state.bookmarks);
 };
 
 const init = function () {
