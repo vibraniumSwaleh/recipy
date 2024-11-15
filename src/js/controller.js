@@ -69,8 +69,8 @@ const controlBookmarks = function () {
   bookmarksView.render(model.state.bookmarks);
 };
 
-const controlAddRecipe = function (recipe) {
-  console.log(recipe);
+const controlAddRecipe = function (newRecipe) {
+  model.uploadRecipe(newRecipe);
 };
 
 const init = function () {
@@ -84,9 +84,3 @@ const init = function () {
 };
 
 init();
-
-const clearBookmarsk = function () {
-  localStorage.clear('bookmarks');
-};
-
-//clearBookmarsk();

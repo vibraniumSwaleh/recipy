@@ -96,9 +96,29 @@ export const deleteBookmark = function (id) {
   persistBookmaers();
 };
 
+export const uploadRecipe = async function (newRecipe) {
+  console.log('newRecipe', newRecipe);
+  const ingredients = Object.entries(newRecipe)
+    .filter(item => item[0].startsWith('ingredient') && item[1] !== '')
+    .map(ing => {
+      const [quantity, unit, description] = ing[1]
+        .replaceAll(' ', '')
+        .split(',');
+      return { quantity: quantity ? +quantity : null, unit, description };
+    });
+
+  console.log(ingredients);
+};
+
 const init = function () {
   const storage = localStorage.getItem('bookmarks');
   if (storage) state.bookmarks = JSON.parse(storage);
   console.log(state.bookmarks);
 };
 init();
+
+const clearBookmarsk = function () {
+  localStorage.clear('bookmarks');
+};
+
+//clearBookmarsk();
