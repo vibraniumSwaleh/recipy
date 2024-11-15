@@ -97,17 +97,21 @@ export const deleteBookmark = function (id) {
 };
 
 export const uploadRecipe = async function (newRecipe) {
-  console.log('newRecipe', newRecipe);
-  const ingredients = Object.entries(newRecipe)
-    .filter(item => item[0].startsWith('ingredient') && item[1] !== '')
-    .map(ing => {
-      const [quantity, unit, description] = ing[1]
-        .replaceAll(' ', '')
-        .split(',');
-      return { quantity: quantity ? +quantity : null, unit, description };
-    });
-
-  console.log(ingredients);
+  try {
+    console.log('newRecipe', newRecipe);
+    const ingredients = Object.entries(newRecipe)
+      .filter(item => item[0].startsWith('ingredient') && item[1] !== '')
+      .map(ing => {
+        const ingArr = ing[1].replaceAll(' ', '').split(',');
+        if (ingArr.length !== 3)
+          throw new Error('Wrong ingredient formart, use correct format!');
+        const [quantity, unit, description] = ingArr;
+        return { quantity: quantity ? +quantity : null, unit, description };
+      });
+    console.log(ingredients);
+  } catch (error) {
+    throw error;
+  }
 };
 
 const init = function () {
