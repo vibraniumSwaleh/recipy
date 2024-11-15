@@ -23,7 +23,6 @@ const controlRecipes = async function () {
     // Loading recipe
     await model.loadRecipe(id);
     const { recipe } = model.state;
-    console.log('single recipe: ', recipe);
 
     recipeView.render(recipe);
   } catch (error) {
@@ -79,3 +78,9 @@ const init = function () {
 };
 
 init();
+
+const clearBookmarsk = function () {
+  localStorage.clear('bookmarks');
+};
+
+//clearBookmarsk();
