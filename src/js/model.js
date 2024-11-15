@@ -102,4 +102,3 @@ const init = function () {
   console.log(state.bookmarks);
 };
 init();
-
