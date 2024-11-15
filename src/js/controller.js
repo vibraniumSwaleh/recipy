@@ -4,6 +4,7 @@ import searchView from '../../.src/js/views/searchView';
 import resultsView from './views/resultsView';
 import paginationView from './views/paginationView';
 import bookmarksView from './views/bookmarksView';
+import addRecipeView from './views/addRecipeView';
 
 import 'core-js/stable'; //all other polyfils
 import 'regenerator-runtime/runtime'; //async and await
@@ -68,7 +69,12 @@ const controlBookmarks = function () {
   bookmarksView.render(model.state.bookmarks);
 };
 
+const controlAddRecipe = function (recipe) {
+  console.log(recipe);
+};
+
 const init = function () {
+  addRecipeView.addHandlerUpload(controlAddRecipe);
   bookmarksView.addHandlerRender(controlBookmarks);
   recipeView.addHandlerRender(controlRecipes);
   searchView.addHandlerSearch(controlSearchResults);
