@@ -1,6 +1,6 @@
 import { async } from 'regenerator-runtime';
-import { API_URL, RES_PER_PAGE } from './config';
-import { getJSON } from './helper';
+import { API_KEY, API_URL, RES_PER_PAGE } from './config';
+import { getJSON, sendJSON } from './helper';
 
 //https://forkify-api.herokuapp.com/api/v2/recipes?search=pizza
 
@@ -117,7 +117,9 @@ export const uploadRecipe = async function (newRecipe) {
       servings: +newRecipe.servings,
       ingredients,
     };
-    console.log(recipe);
+
+    const data = await sendJSON(`${API_URL}?key=${API_KEY}`, recipe);
+    console.log(data);
   } catch (error) {
     throw error;
   }
