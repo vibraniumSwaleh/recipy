@@ -14,7 +14,6 @@ class RecipeView extends View {
       const btn = e.target.closest('.btn--update-servings');
       if (!btn) return;
       const { updateTo } = btn.dataset;
-      console.log('updateTo: ', updateTo);
       if (+updateTo > 0) handler(+updateTo);
     });
   }
@@ -34,7 +33,6 @@ class RecipeView extends View {
   }
 
   _generateMarkupIngredients(ing) {
-    console.log('this._data.sourceUrl: ', this._data.sourceUrl);
     return `
     <li class="recipe__ingredient">
       <svg class="recipe__icon">

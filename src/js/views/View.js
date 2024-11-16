@@ -73,7 +73,6 @@ export default class View {
   }
 
   renderMessage(message = this._message) {
-    console.log('View:', this);
     const markup = `
     <div class="message">
       <div>

@@ -43,7 +43,6 @@ export const loadRecipe = async function (id) {
     } else {
       state.recipe.bookmarked = false;
     }
-    //console.log('Model recipe: ', state.recipe);
   } catch (error) {
     throw error;
   }
@@ -134,7 +133,6 @@ export const uploadRecipe = async function (newRecipe) {
 const init = function () {
   const storage = localStorage.getItem('bookmarks');
   if (storage) state.bookmarks = JSON.parse(storage);
-  console.log(state.bookmarks);
 };
 init();
 

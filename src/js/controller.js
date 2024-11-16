@@ -27,7 +27,6 @@ const controlRecipes = async function () {
     const { recipe } = model.state;
 
     recipeView.render(recipe);
-    console.log(recipe);
   } catch (error) {
     recipeView.renderError();
   }
@@ -62,7 +61,6 @@ const controlServings = function (newServings) {
 const controlAddBookmark = function () {
   if (!model.state.recipe.bookmarked) model.addBookmark(model.state.recipe);
   else model.deleteBookmark(model.state.recipe.id); // Add/Remove bookmark
-  console.log('Bookmark status:', model.state.recipe);
   recipeView.update(model.state.recipe); // Update recipe view
   bookmarksView.render(model.state.bookmarks); //Render bookmarks
 };
@@ -76,7 +74,6 @@ const controlAddRecipe = async function (newRecipe) {
     addRecipeView.renderSpinner();
     await model.uploadRecipe(newRecipe);
     recipeView.render(model.state.recipe);
-    console.log('Uploaded: ', model.state.recipe);
 
     addRecipeView.renderMessage();
     bookmarksView.render(model.state.bookmarks);
@@ -90,7 +87,6 @@ const controlAddRecipe = async function (newRecipe) {
       }, MODAL_CLOSE_SEC * 1000);
     }, MODAL_CLOSE_SEC * 1000);
   } catch (error) {
-    console.log('⛔', error);
     addRecipeView.renderError(error.message);
   }
 };
