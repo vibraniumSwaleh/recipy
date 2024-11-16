@@ -71,8 +71,9 @@ const controlBookmarks = function () {
 
 const controlAddRecipe = async function (newRecipe) {
   try {
-    const recipe = await model.uploadRecipe(newRecipe);
-    recipeView.render(recipe);
+    await model.uploadRecipe(newRecipe);
+    recipeView.render(model.state.recipe);
+    console.log('Uploaded: ', model.state.recipe);
   } catch (error) {
     console.log('⛔', error);
     addRecipeView.renderError(error.message);
