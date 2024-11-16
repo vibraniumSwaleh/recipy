@@ -1,6 +1,6 @@
 import { async } from 'regenerator-runtime';
 import { API_KEY, API_URL, RES_PER_PAGE } from './config';
-import { getJSON, sendJSON } from './helper';
+import { AJAX, AJAX } from './helper';
 
 //https://forkify-api.herokuapp.com/api/v2/recipes?search=pizza
 
@@ -35,7 +35,7 @@ const createRecipeObject = function (data) {
 
 export const loadRecipe = async function (id) {
   try {
-    const data = await getJSON(`${API_URL}${id}`);
+    const data = await AJAX(`${API_URL}${id}`);
     state.recipe = createRecipeObject(data);
 
     if (state.bookmarks.some(bookmark => bookmark.id === id)) {
@@ -52,7 +52,7 @@ export const loadRecipe = async function (id) {
 export const loadSearchResults = async function (query) {
   try {
     state.search.query = query;
-    const data = await getJSON(`${API_URL}?search=${query}`);
+    const data = await AJAX(`${API_URL}?search=${query}`);
     state.search.results = data.data.recipes.map(recipe => {
       return {
         id: recipe.id,
@@ -122,7 +122,7 @@ export const uploadRecipe = async function (newRecipe) {
       ingredients,
     };
 
-    const data = await sendJSON(`${API_URL}?key=${API_KEY}`, recipe);
+    const data = await AJAX(`${API_URL}?key=${API_KEY}`, recipe);
     state.recipe = createRecipeObject(data);
     addBookmark(state.recipe);
     return state.recipe;
