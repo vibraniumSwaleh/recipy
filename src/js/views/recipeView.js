@@ -10,7 +10,7 @@ class RecipeView extends View {
 
   addHandlerUpdateServings(handler) {
     this._parentElement.addEventListener('click', function (e) {
-      e.preventDefault();
+      
       const btn = e.target.closest('.btn--update-servings');
       if (!btn) return;
       const { updateTo } = btn.dataset;
@@ -34,6 +34,7 @@ class RecipeView extends View {
   }
 
   _generateMarkupIngredients(ing) {
+    console.log('this._data.sourceUrl: ', this._data.sourceUrl);
     return `
     <li class="recipe__ingredient">
       <svg class="recipe__icon">
