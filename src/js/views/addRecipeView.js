@@ -13,6 +13,7 @@ class AddRecipeView extends View {
     super();
     this._addHandlerShowWindow();
     this._addHandlerHideWindow();
+    this._initialFormHTML = this._parentElement.innerHTML;
   }
 
   toggleWindow() {
@@ -34,11 +35,14 @@ class AddRecipeView extends View {
       e.preventDefault();
       const dataArr = [...new FormData(this)];
       const data = Object.fromEntries(dataArr);
+
       handler(data);
     });
   }
 
-  _generateMarkup() {}
+  _resetForm() {
+    this._parentElement.innerHTML = this._initialFormHTML;
+  }
 }
 
 export default new AddRecipeView();
