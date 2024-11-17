@@ -2,10 +2,9 @@
   "name": "recipy",
   "version": "1.0.0",
   "description": "Application to search for recipies",
-  "main": "scripts.js",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --dist-dir ./dist"
   },
   "repository": {
     "type": "git",
