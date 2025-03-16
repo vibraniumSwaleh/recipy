@@ -2,8 +2,6 @@ import { async } from 'regenerator-runtime';
 import { API_KEY, API_URL, RES_PER_PAGE } from './config';
 import { AJAX, AJAX } from './helper';
 
-//https://forkify-api.herokuapp.com/api/v2/recipes?search=pizza
-
 export const state = {
   recipe: {},
   search: {
@@ -139,5 +137,3 @@ init();
 const clearBookmarsk = function () {
   localStorage.clear('bookmarks');
 };
-
-//clearBookmarsk();
